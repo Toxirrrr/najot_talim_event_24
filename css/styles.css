@@ -386,7 +386,7 @@ header .header__top-text-active {
   color: var(--purple) !important;
 }
 header .header__top-text {
-  margin-left: 16px;
+  margin-left: 10px;
   color: var(--gary);
   font-family: "Inter";
   font-size: 14px;
@@ -471,6 +471,7 @@ header .header__mid .header__inp-wrapper .header__inp {
   width: 527px;
   padding: 11.5px 0 11.5px 17px;
   background: rgb(255, 255, 255);
+  outline: none;
 }
 header .header__mid .header__inp-wrapper .header__btn {
   padding: 8px 21px;
@@ -560,9 +561,97 @@ header .header__bottom .header__text {
   text-align: left;
 }
 
-@media only screen and (max-width: 376px) {
-  .footer .footer__wrapper {
-    flex-wrap: wrap;
-    justify-content: center !important;
+@media only screen and (max-width: 1000px) {
+  .header__mid-text {
+    display: none;
   }
+}
+@media only screen and (max-width: 840px) {
+  .header__top {
+    display: none !important;
+  }
+}
+.footer {
+  padding-top: 30px;
+}
+.footer .footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.footer .footer__wrapper .footer__title {
+  color: rgb(31, 32, 38);
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 16px;
+}
+.footer .footer__wrapper .footer__item {
+  margin-bottom: 20px;
+}
+.footer .footer__wrapper .footer__item a {
+  color: #8b8e99;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.footer .footer__store-wrapper {
+  display: flex;
+  margin-top: 16px;
+}
+.footer .footer__store-wrapper .footer__text {
+  margin-right: 26px;
+  display: flex;
+  align-items: center;
+  color: rgb(31, 32, 38);
+  font-family: "Inter";
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 15.36px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.footer .footer__store-wrapper .footer__text img {
+  margin-right: 8px;
+}
+.footer .footer__socials-wrapper {
+  margin-top: 48px;
+}
+.footer .footer__socials-wrapper .footer__socials {
+  text-align: start;
+  margin-top: 16px;
+}
+.footer .footer__socials-wrapper .footer__socials img {
+  margin-right: 10px;
+}
+.footer .footer__bottom {
+  display: flex;
+  padding: 16px 0;
+}
+.footer .footer__bottom .footer__bottom-title {
+  color: #1f2026;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  margin-right: 16px;
+}
+.footer .footer__bottom .footer__bottom-text {
+  color: rgb(126, 129, 140);
+  font-family: Roboto;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.carousel {
+  padding-top: 44px;
 }/*# sourceMappingURL=styles.css.map */

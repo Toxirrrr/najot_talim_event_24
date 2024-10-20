@@ -42,7 +42,7 @@ header {
         color: var(--purple) !important;
     }
     .header__top-text {
-        margin-left: 16px;
+        margin-left: 10px;
         color: var(--gary);
         font-family: 'Inter';
         font-size: 14px;
@@ -126,7 +126,8 @@ header {
                 border: none;
                 width: 527px;
                 padding: 11.5px 0 11.5px 17px;
-                background: rgb(255, 255, 255);
+                background: rgb(255, 255, 255); 
+                outline: none;
             }
             .header__btn {
                 padding: 8px 21px;
@@ -217,8 +218,14 @@ header {
             text-align: left;
         }
     }
-} 
-
-
-@media only screen and (max-width: 376px){
+}
+@media only screen and (max-width: 1000px){
+    .header__mid-text {
+        display: none;
+    }
+}
+@media only screen and (max-width: 840px){
+    .header__top {
+        display: none !important;
+    }
 }

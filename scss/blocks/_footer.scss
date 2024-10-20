@@ -1,9 +1,87 @@
-@media only screen and (max-width: 376px){
-    .footer{
-        .footer__wrapper{
-            flex-wrap: wrap;
-            justify-content: center !important;
+.footer {
+    padding-top: 30px;
+    .footer__wrapper {
+        display: flex;
+        justify-content: space-between;
+        .footer__title {
+            color: rgb(31, 32, 38);
+            font-family: 'Roboto';
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 19px;
+            letter-spacing: 0%;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .footer__item {
+            margin-bottom: 20px;
+            a {
+                color: #8b8e99;
+                font-family: 'Roboto';
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0%;
+                text-align: left;
+            }
         }
     }
+    .footer__store-wrapper {
+        display: flex;
+        margin-top: 16px;
+        .footer__text {
+            margin-right: 26px;
+            display: flex;
+            align-items: center;
+            color: rgb(31, 32, 38);
+            font-family: 'Inter';
+            font-size: 12.8px;
+            font-weight: 500;
+            line-height: 15.36px;
+            letter-spacing: 0%;
+            text-align: left;
+            img {
+                margin-right: 8px;
+            }
+        }
+    }
+    .footer__socials-wrapper {
+        margin-top: 48px;
+        .footer__socials {
+            text-align: start;
+            margin-top: 16px;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+    .footer__bottom {
+        display: flex;
+        padding: 16px 0;
+        .footer__bottom-title {
+            color: #1f2026;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18px;
+            text-align: left;
+            margin-right: 16px;
+        }
+        .footer__bottom-text {
+            color: rgb(126, 129, 140);
+            font-family: Roboto;
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 14px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+    }
+}
 
+
+
+
+@media only screen and (max-width: 376px){
+    
 }
