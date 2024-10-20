@@ -4,11 +4,7 @@ let elAllList = document.querySelector('.all__list')
 let elBasketCount = document.querySelector('.header__bin-count')
 let elLikeCount = document.querySelector('.header__like-count')
 
-
 getAll()
-login()
-
-
 
 async function getAll() {
     let data = await fetch(`${api}items`)
@@ -70,106 +66,77 @@ async function addToBasket(e) {
     }
 }
 
-
-async function login() {
-    try {
-        let res = await fetch(`${api}login`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'POST',
-            body: JSON.stringify({
-                username: 'Toxirrrr',
-                password: 'N42 Fullstack'
-            })
-        })
-        res = await res.json()
-        console.log(res);
-        
-        
-    } catch (error) {
-        console.log('login err', error);
-
-    }
-
-}
-
-
-
 function render(data) {
     elGoodsList.innerHTML = ''
 
-    if (data) {
-        for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
 
-            item = data[i];
+        item = data[i];
 
-            let li = document.createElement('li')
+        let li = document.createElement('li')
 
-            let img = document.createElement('img')
-            let name = document.createElement('h2')
-            let feedback = document.createElement('p')
-            let installments = document.createElement('p')
-            let price = document.createElement('p')
-            let sale = document.createElement('p')
-            let count = document.createElement('p')
-            let priceWrapper = document.createElement('div')
-            let wrapper = document.createElement('div')
-            let isLike = document.createElement('img')
-            let isBasket = document.createElement('img')
-            let discount = document.createElement('p')
-            let original = document.createElement('p')
+        let img = document.createElement('img')
+        let name = document.createElement('h2')
+        let feedback = document.createElement('p')
+        let installments = document.createElement('p')
+        let price = document.createElement('p')
+        let sale = document.createElement('p')
+        let priceWrapper = document.createElement('div')
+        let wrapper = document.createElement('div')
+        let isLike = document.createElement('img')
+        let isBasket = document.createElement('img')
+        let discount = document.createElement('p')
+        let original = document.createElement('p')
 
-            li.className = 'good__item'
-            li.id = item.id
+        li.className = 'good__item'
+        li.id = item.id
 
-            img.width = 232
-            img.height = 310
+        img.width = 232
+        img.height = 310
 
-            img.className = 'goods__item-img'
-            name.className = 'goods__item-name'
-            feedback.className = 'goods__item-feedback'
-            installments.className = 'goods__item-installments'
-            wrapper.className = 'goods__item-wrapper'
-            priceWrapper.className = 'goods__item-price-wrapper'
-            price.className = 'goods__item-price'
-            sale.className = 'goods__item-sale'
-            isLike.className = 'goods__item-isLike'
-            isBasket.className = 'goods__item-isBasket'
-            discount.className = 'goods__item-discount'
-            original.className = 'goods__item-original'
+        img.className = 'goods__item-img'
+        name.className = 'goods__item-name'
+        feedback.className = 'goods__item-feedback'
+        installments.className = 'goods__item-installments'
+        wrapper.className = 'goods__item-wrapper'
+        priceWrapper.className = 'goods__item-price-wrapper'
+        price.className = 'goods__item-price'
+        sale.className = 'goods__item-sale'
+        isLike.className = 'goods__item-isLike'
+        isBasket.className = 'goods__item-isBasket'
+        discount.className = 'goods__item-discount'
+        original.className = 'goods__item-original'
 
-            img.src = item.img
-            name.textContent = item.name
-            feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
-            installments.textContent = item.installments
-            price.textContent = item.price
-            sale.textContent = item.price
-            if (item.isLike) {
-                isLike.src = '/img/like.svg'
-            } else {
-                isLike.src = '/img/notLike.svg'
-            }
-            isLike.id = item.id
-            isBasket.id = item.id
-            isBasket.src = '/img/addBasket.svg'
-
-            if (item.discount) {
-                discount.textContent = 'Aksia'
-            } else if (item.original) {
-                original.textContent = 'Original'
-            }
-
-            isLike.onclick = isLiked
-            isBasket.onclick = addToBasket
-
-            priceWrapper.append(wrapper, isBasket)
-            wrapper.append(price, sale)
-            elGoodsList.append(li)
-
-            li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
-
+        img.src = item.img
+        name.textContent = item.name
+        feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
+        installments.textContent = item.installments
+        price.textContent = item.price
+        sale.textContent = item.price
+        if (item.isLike) {
+            isLike.src = '/img/like.svg'
+        } else {
+            isLike.src = '/img/notLike.svg'
         }
-    } else {
-        console.log('');
+        isLike.id = item.id
+        isBasket.id = item.id
+        isBasket.src = '/img/addBasket.svg'
+
+        if (item.discount) {
+            discount.textContent = 'Aksia'
+        } else if (item.original) {
+            original.textContent = 'Original'
+        }
+
+        isLike.onclick = isLiked
+        isBasket.onclick = addToBasket
+
+        priceWrapper.append(wrapper, isBasket)
+        wrapper.append(price, sale)
+        elGoodsList.append(li)
+
+        li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
+
     }
 
 
@@ -179,15 +146,15 @@ function render(data) {
 
 
 function renderAll(data) {
-    if(!data.length == 0) {
+    if (!data.length == 0) {
         elAllList.innerHTML = ''
 
         for (let i = 0; i < data.length; i++) {
-    
+
             item = data[i];
-    
+
             let li = document.createElement('li')
-    
+
             let img = document.createElement('img')
             let name = document.createElement('h2')
             let feedback = document.createElement('p')
@@ -201,13 +168,13 @@ function renderAll(data) {
             let isBasket = document.createElement('img')
             let discount = document.createElement('p')
             let original = document.createElement('p')
-    
+
             li.className = 'all__item'
             li.id = item.id
-    
+
             img.width = 232
             img.height = 310
-    
+
             img.className = 'all__item-img'
             name.className = 'all__item-name'
             feedback.className = 'all__item-feedback'
@@ -220,7 +187,7 @@ function renderAll(data) {
             isBasket.className = 'all__item-isBasket'
             discount.className = 'all__item-discount'
             original.className = 'all__item-original'
-    
+
             img.src = item.img
             name.textContent = item.name
             feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
@@ -235,24 +202,24 @@ function renderAll(data) {
             isLike.id = item.id
             isBasket.id = item.id
             isBasket.src = '/img/addBasket.svg'
-    
+
             if (item.discount) {
                 discount.textContent = 'Aksia'
             } else if (item.original) {
                 original.textContent = 'Original'
             }
-    
+
             isLike.onclick = isLiked
             isBasket.onclick = addToBasket
-    
+
             priceWrapper.append(wrapper, isBasket)
             wrapper.append(price, sale)
             elGoodsList.append(li)
-    
+
             li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
-    
+
             elAllList.append(li)
-    
+
         }
     }
 

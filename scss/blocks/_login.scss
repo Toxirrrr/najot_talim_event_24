@@ -1,5 +1,8 @@
 .login {
     padding: 150px 0;
+    background-image: url('/img/carousel__img1.png');
+    background-repeat: no-repeat;
+    background-position: center;
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -19,7 +22,7 @@
     padding: 10px 20px;
     border: 1px solid rgba(54, 55, 64, 0.2);
     border-radius: 4px;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
 }
 
