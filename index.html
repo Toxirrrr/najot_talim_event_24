@@ -8,113 +8,125 @@
   </head>
   <body>
     <header class="header">
-      <div class="container">
-        <div class="header__top">
-          <div class="header__top-left">
-            <img
-              src="./img/location.svg"
-              width="24"
-              height="24"
-              alt="location"
-            />
-            <p class="header__top-bold">
-              Shahar:
-              <a href="https://yandex.uz/maps/-/CDdZeQlK" target="_blank"
-                >Toshkent</a
-              >
-            </p>
-            <p class="header__top-text">Topshirish punktlari</p>
-          </div>
-          <div class="header__top-right">
-            <p class="header__top-text">Uzumda soting</p>
-            <p class="header__top-text">Savol-javoblar</p>
-            <p class="header__top-text">Buyurtmalarim</p>
-            <p class="header__top-language">
+      <div class="header__top-wrapper">
+        <div class="container">
+          <div class="header__top">
+            <div class="header__top-left">
               <img
-                src="./img/header__language.png"
-                width="20"
-                height="20"
-                alt="language"
+                src="./img/location.svg"
+                width="24"
+                height="24"
+                alt="location"
               />
-              Оʻzbekcha
-            </p>
+              <p class="header__top-text">
+                Shahar:
+                <a href="https://yandex.uz/maps/-/CDdZeQlK" target="_blank"
+                  >Toshkent</a
+                >
+              </p>
+              <p class="header__top-bold">Topshirish punktlari</p>
+            </div>
+            <div class="header__top-right">
+              <p class="header__top-text-active">Uzumda soting</p>
+              <p class="header__top-text">Savol-javoblar</p>
+              <p class="header__top-text">Buyurtmalarim</p>
+              <p class="header__top-language">
+                <img
+                  src="./img/header__language.png"
+                  width="20"
+                  height="20"
+                  alt="language"
+                />
+                Оʻzbekcha
+              </p>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="container">
         <div class="header__mid">
           <img
+          class="header__logo"
             src="./img/header__logo.svg"
             width="215"
             height="32"
             alt="logo"
           />
-          <div class="header__katalog">
-            <div>
-              <div class="header__img-react"></div>
+          <div class="header__directory">
+            <div class="header__directory-wrapper">
               <div class="header__img-top"></div>
+              <div class="header__img-center"></div>
               <div class="header__img-bottom"></div>
             </div>
-            <p class="header__katalog-text"></p>
+            <p class="header__katalog-text">Katalog</p>
           </div>
-          <input type="text" class="header__inp" />
-          <div class="header__login">
+          <div class="header__inp-wrapper">
+            <input type="text" class="header__inp" placeholder="Mahsulotlar va turkumlar izlash" />
+            <button class="header__btn"><img src="./img/header__search.svg" width="24" height="24" alt="search"></button>
+          </div>
+          <a href="" class="header__login">
             <img
-              src="./img/header__login.svg"
-              width="16"
-              height="18"
-              alt="login"
+            src="./img/header__login.svg"
+            width="16"
+            height="18"
+            alt="login"
             />
-            <p class="header__mid-text"></p>
-          </div>
-          <div class="header__like">
-            <img
-              src="./img/like.svg"
-              width="20"
-              height="17.5"
-              alt="like"
-            />
-            <p class="header__mid-text"></p>
-          </div>
-          <div class="header__bin">
-            <img
-              src="./img/basket.svg"
-              width="16"
-              height="20"
-              alt="bin"
-            />
-            <p class="header__mid-text"></p>
-          </div>
+            <p class="header__mid-text">Kirish</p>
+          </a>
+          <a href="/" class="header__like">
+            <p class="header__like-count">2</p>
+            <img src="./img/like.svg" width="20" height="17.5" alt="like" />
+            <p class="header__mid-text">Saralangan</p>
+          </a>
+          <a href="/" class="header__bin">
+            <p class="header__bin-count">2</p>
+            <img src="./img/basket.svg" width="16" height="20" alt="bin" />
+            <p class="header__mid-text">Savat</p>
+          </a>
         </div>
         <div class="header__bottom">
           <ul class="header__list">
             <li class="header__item">
-                <p class="header__text">Elektronika</p>
+              <p class="header__text">Maktab bozori</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Maishiy texnika</p>
+              <p class="header__text">Yozgi savdo</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Kiyim</p>
+              <p class="header__text">Kanselyariya</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Poyabzallar</p>
+              <p class="header__text">Nasiya</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Aksessuarlar</p>
+              <p class="header__text">Elektronika</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Goʻzallik va parvarish</p>
+              <p class="header__text">Maishiy texnika</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Salomatlik</p>
+              <p class="header__text">Kiyim</p>
             </li>
             <li class="header__item">
-                <p class="header__text">Yana</p>
+              <p class="header__text">Poyabzallar</p>
+            </li>
+            <li class="header__item">
+              <p class="header__text">Aksessuarlar</p>
+            </li>
+            <li class="header__item">
+              <p class="header__text">Goʻzallik va parvarish</p>
+            </li>
+            <li class="header__item">
+              <p class="header__text">Salomatlik</p>
+            </li>
+            <li class="header__item">
+              <p class="header__text">Yana</p>
+              <img src="./img/header__vector.svg" width="9" height="5" alt="vector">
             </li>
           </ul>
         </div>
       </div>
     </header>
-
 
     <script src="./js/index.js"></script>
   </body>
