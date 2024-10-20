@@ -1,0 +1,35 @@
+.loading {
+    padding: 104px 0;
+    .lodaing__wrapper {
+        text-align: center;
+        .loading__img {
+            margin-bottom: 24px;
+        }
+        .loading__title {
+            color: rgb(31, 32, 38);
+            font-family: Inter;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 26.4px;
+            margin-bottom: 15px;
+        }
+        .loading__text {
+            color: rgb(31, 32, 38);
+            font-family: 'Inter';
+            font-size: 12.8px;
+            font-weight: 400;
+            line-height: 17.92px;
+            margin-bottom: 16px;
+        }
+        .loading__link {
+            color: rgb(255, 255, 255);
+            font-family: 'Inter';
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 17px;
+            border-radius: 4px;
+            padding: 10px 14px;
+            background-color: rgb(112, 0, 255);
+        }
+    }
+}

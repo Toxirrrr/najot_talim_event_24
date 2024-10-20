@@ -228,4 +228,36 @@ header {
     .header__top {
         display: none !important;
     }
+    .header__directory {
+        display: none !important;
+    }
+    .header__bottom {
+        display: none;
+    }
+}
+@media only screen and (max-width: 750px){
+    .header__login {
+        display: none !important;
+    }
+    .header__like {
+        display: none !important;
+    }
+    .header__bin {
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 750px){
+    .header__mid {
+        flex-direction: column;
+    }
+    .header__logo {
+        margin: 10px 0;
+    }
+    .header__inp-wrapper {
+        justify-content: space-between;
+        width: 100%;
+    }
+    .header__inp {
+        width: 100%;
+    }
 }
