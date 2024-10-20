@@ -7,6 +7,8 @@
     <title>Duo Vs Title</title>
   </head>
   <body>
+    <!--HEADER-->
+
     <header class="header">
       <div class="header__top-wrapper">
         <div class="container">
@@ -27,9 +29,9 @@
               <p class="header__top-bold">Topshirish punktlari</p>
             </div>
             <div class="header__top-right">
-              <p class="header__top-text-active">Uzumda soting</p>
-              <p class="header__top-text">Savol-javoblar</p>
-              <p class="header__top-text">Buyurtmalarim</p>
+              <a class="header__top-text header__top-text-active" href="/">Uzumda soting</a>
+              <a class="header__top-text" href="/">Savol-javoblar</a>
+              <a class="header__top-text" href="/">Buyurtmalarim</a>
               <p class="header__top-language">
                 <img
                   src="./img/header__language.png"
@@ -45,13 +47,15 @@
       </div>
       <div class="container">
         <div class="header__mid">
-          <img
-          class="header__logo"
-            src="./img/header__logo.svg"
-            width="215"
-            height="32"
-            alt="logo"
-          />
+          <a class="header__img-wrapper" href="/">
+            <img
+              class="header__logo"
+              src="./img/header__logo.svg"
+              width="215"
+              height="32"
+              alt="logo"
+            />
+          </a>
           <div class="header__directory">
             <div class="header__directory-wrapper">
               <div class="header__img-top"></div>
@@ -61,15 +65,26 @@
             <p class="header__katalog-text">Katalog</p>
           </div>
           <div class="header__inp-wrapper">
-            <input type="text" class="header__inp" placeholder="Mahsulotlar va turkumlar izlash" />
-            <button class="header__btn"><img src="./img/header__search.svg" width="24" height="24" alt="search"></button>
+            <input
+              type="text"
+              class="header__inp"
+              placeholder="Mahsulotlar va turkumlar izlash"
+            />
+            <button class="header__btn">
+              <img
+                src="./img/header__search.svg"
+                width="24"
+                height="24"
+                alt="search"
+              />
+            </button>
           </div>
           <a href="" class="header__login">
             <img
-            src="./img/header__login.svg"
-            width="16"
-            height="18"
-            alt="login"
+              src="./img/header__login.svg"
+              width="16"
+              height="18"
+              alt="login"
             />
             <p class="header__mid-text">Kirish</p>
           </a>
@@ -121,12 +136,30 @@
             </li>
             <li class="header__item">
               <p class="header__text">Yana</p>
-              <img src="./img/header__vector.svg" width="9" height="5" alt="vector">
+              <img
+                src="./img/header__vector.svg"
+                width="9"
+                height="5"
+                alt="vector"
+              />
             </li>
           </ul>
         </div>
       </div>
     </header>
+
+    <!--MAIN-->
+
+    <main class="main" id="main">
+      <!--GOODS-->
+      <section class="goods" id="goods">
+        <div class="container">
+          <div class="goods__wrapper">
+            <ul class="goods__list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <script src="./js/index.js"></script>
   </body>

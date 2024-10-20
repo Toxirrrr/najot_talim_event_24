@@ -34,8 +34,6 @@ async function login() {
 
 function render(data) {
 
-    let list = document.createElement('ul')
-
     for (let i = 0; i < data.length; i++) {
         const item = data[i];
 
@@ -88,9 +86,9 @@ function render(data) {
 
         li.append(img, name, feedback, installments, price, sale, count, isLike, isBasket, discount, original)
 
-        list.appendChild(li)
-
+        elGoodsList.append(li)
     }
+
 
     console.log(list);
 
