@@ -1,55 +1,25 @@
 let api = 'https://6714b258690bf212c762246c.mockapi.io/'
 let elGoodsList = document.querySelector('.goods__list')
 
-getAll()
-login()
-
-let loading = `
-<section class="loading">
-      <div class="container">
-        <div class="lodaing__wrapper">
-          <img class="loading__img" width="128" height="128" src="./img/loading__img.png" alt="loading">
-          <h2 class="loading__title">Sizga yoqqanini qoʻshing</h2>
-          <p class="loading__text">Mahsulotdagi ♡ belgisini bosing. Akkauntga kiring va barcha saralanganlar saqlanib qoladi</p>
-          <a href="/" class="loading__link">Like Bosish</a>
-        </div>
-      </div>
-    </section>
-`
-
-
 async function getAll() {
     let data = await fetch(`${api}items`)
 
     let arr = await data.json()
 
-    render(arr)
+    arr = arr.filter(item => {
+        if(item.isLike) {
+           return item
+        }
+        
+    })
+
+    console.log(arr);
+    
+
+    renderLikePage(arr)
 
 }
 
-async function isLiked(e) {
-    try {
-        let situation = e.target.src.split('/').at(-1)
-        let id = e.target.id
-
-        let req = JSON.stringify({
-            isLike: situation == 'notLike.svg' ? true : false
-        })
-        console.log(req);
-
-
-        await fetch(`${api}items/${id}`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'PUT',
-            body: req
-        })
-
-        getAll()
-    } catch (error) {
-        console.log('isLike err', error);
-
-    }
-}
 
 async function addToBasket(e) {
     try {
@@ -76,26 +46,7 @@ async function addToBasket(e) {
 }
 
 
-async function login() {
-    try {
-        await fetch(`${api}login`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'POST',
-            body: JSON.stringify({
-                username: 'Toxirrrr',
-                password: 'f5b15a41-ce30-4f9f-894f-1757b153b0a1'
-            })
-        })
-    } catch (error) {
-        console.log('login err', error);
-
-    }
-
-}
-
-
-
-function render(data) {
+function renderLikePage(data) {
     elGoodsList.innerHTML = ''
 
     if (data) {
@@ -160,8 +111,7 @@ function render(data) {
             } else if (item.original) {
                 original.textContent = 'Original'
             }
-
-            isLike.onclick = isLiked
+            isBasket.onclick = isLiked
             isBasket.onclick = addToBasket
 
             priceWrapper.append(wrapper, isBasket)
@@ -179,3 +129,4 @@ function render(data) {
 
 }
 
+getAll()

@@ -13,6 +13,7 @@
   .good__item {
     width: 232px;
     margin-bottom: 30px;
+    position: relative;
   }
 
   .goods__item-img {
@@ -57,6 +58,18 @@
     border-radius: 4px;
   }
 
+
+  .goods__item-price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .goods__item-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   .goods__item-price {
     color: rgb(126, 129, 140);
     font-family: Inter;
@@ -82,9 +95,14 @@
   }
 
   .goods__item-isLike {
+    position: absolute;
+    right: 14px;
+    top: 14px;
   }
 
   .goods__item-isBasket {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
   }
 
   .goods__item-discount {
