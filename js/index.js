@@ -48,6 +48,9 @@ async function login() {
         })
     })
 
+    console.log('response');
+    
+
 }
 
 
@@ -55,74 +58,81 @@ async function login() {
 function render(data) {
     elGoodsList.innerHTML = ''
 
-    for (let i = 0; i < data.length; i++) {
-
-        item = data[i];
-
-        let li = document.createElement('li')
-
-
-
-
-
-        let img = document.createElement('img')
-        let name = document.createElement('h2')
-        let feedback = document.createElement('p')
-        let installments = document.createElement('p')
-        let price = document.createElement('p')
-        let sale = document.createElement('p')
-        let count = document.createElement('p')
-        let isLike = document.createElement('img')
-        let isBasket = document.createElement('p')
-        let discount = document.createElement('p')
-        let original = document.createElement('p')
-
-        li.className = 'good__item'
-        li.id = item.id
-
-        img.width = 232
-        img.height = 310
-
-        img.className = 'goods__item-img'
-        name.className = 'goods__item-name'
-        feedback.className = 'goods__item-feedback'
-        installments.className = 'goods__item-installments'
-        price.className = 'goods__item-price'
-        sale.className = 'goods__item-sale'
-        count.className = 'goods__item-count'
-        isLike.className = 'goods__item-isLike'
-        isBasket.className = 'goods__item-isBasket'
-        discount.className = 'goods__item-discount'
-        original.className = 'goods__item-original'
-
-        img.src = item.img
-        name.textContent = item.name
-        feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
-        installments.textContent = item.installments
-        price.textContent = item.price
-        sale.textContent = item.price
-        count.textContent = item.count
-        if (item.isLike) {
-            isLike.src = '/img/like.svg'
-        } else {
-            isLike.src = '/img/notLike.svg'
+    try {
+        if (data) {
+            for (let i = 0; i < data.length; i++) {
+        
+                item = data[i];
+        
+                let li = document.createElement('li')
+        
+                let img = document.createElement('img')
+                let name = document.createElement('h2')
+                let feedback = document.createElement('p')
+                let installments = document.createElement('p')
+                let price = document.createElement('p')
+                let sale = document.createElement('p')
+                let count = document.createElement('p')
+                let isLike = document.createElement('img')
+                let isBasket = document.createElement('p')
+                let discount = document.createElement('p')
+                let original = document.createElement('p')
+        
+                li.className = 'good__item'
+                li.id = item.id
+        
+                img.width = 232
+                img.height = 310
+        
+                img.className = 'goods__item-img'
+                name.className = 'goods__item-name'
+                feedback.className = 'goods__item-feedback'
+                installments.className = 'goods__item-installments'
+                price.className = 'goods__item-price'
+                sale.className = 'goods__item-sale'
+                count.className = 'goods__item-count'
+                isLike.className = 'goods__item-isLike'
+                isBasket.className = 'goods__item-isBasket'
+                discount.className = 'goods__item-discount'
+                original.className = 'goods__item-original'
+        
+                img.src = item.img
+                name.textContent = item.name
+                feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
+                installments.textContent = item.installments
+                price.textContent = item.price
+                sale.textContent = item.price
+                count.textContent = item.count
+                if (item.isLike) {
+                    isLike.src = '/img/like.svg'
+                } else {
+                    isLike.src = '/img/notLike.svg'
+                }
+                isLike.id = item.id
+                isBasket.id = item.id
+        
+                if (item.discount) {
+                    discount.textContent = 'Aksia'
+                } else if (item.original) {
+                    original.textContent = 'Original'
+                }
+        
+                isLike.onclick = isLiked
+        
+                elGoodsList.append(li)
+        
+                li.append(img, name, feedback, installments, price, sale, count, isLike, isBasket, discount, original)
+        
+            }
+        }else {
+            console.log('');
         }
-        isLike.id = item.id
-        isBasket.id = item.id
-
-        if (item.discount) {
-            discount.textContent = 'Aksia'
-        } else if (item.original) {
-            original.textContent = 'Original'
-        }
-
-        isLike.onclick = isLiked
-
-        elGoodsList.append(li)
-
-        li.append(img, name, feedback, installments, price, sale, count, isLike, isBasket, discount, original)
-
+    } catch (error) {
+        elGoodsList.innerHTML = 'Loading'
+    }finally {
+        elGoodsList.innerHTML = 'Loading'
     }
+
 
 
 }
