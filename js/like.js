@@ -21,6 +21,30 @@ async function getAll() {
 }
 
 
+async function isLiked(e) {
+    try {
+        let situation = e.target.src.split('/').at(-1)
+        let id = e.target.id
+
+        let req = JSON.stringify({
+            isLike: situation == 'notLike.svg' ? true : false
+        })
+        console.log(req);
+
+
+        await fetch(`${api}items/${id}`, {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'PUT',
+            body: req
+        })
+
+        getAll()
+    } catch (error) {
+        console.log('isLike err', error);
+
+    }
+}
+
 async function addToBasket(e) {
     try {
         let id = e.target.id
