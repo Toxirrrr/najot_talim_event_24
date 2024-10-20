@@ -9,7 +9,6 @@
   </head>
   <body>
     <!--HEADER-->
-
     <header class="header">
       <div class="header__top-wrapper">
         <div class="container">
@@ -30,7 +29,8 @@
               <p class="header__top-bold">Topshirish punktlari</p>
             </div>
             <div class="header__top-right">
-              <a class="header__top-text header__top-text-active" href="/">Uzumda soting</a
+              <a class="header__top-text header__top-text-active" href="/"
+                >Uzumda soting</a
               >
               <a class="header__top-text" href="/">Savol-javoblar</a>
               <a class="header__top-text" href="/">Buyurtmalarim</a>
@@ -153,8 +153,51 @@
     <!--MAIN-->
 
     <main class="main" id="main">
-    
       <!--GOODS-->
+      <section class="basket">
+        <div class="container">
+          <div class="basket__wrapper">
+            <div>
+              <h2 class="basket__title">
+                Savatingiz<span class="basket__span">1 mahsulot</span>
+              </h2>
+              <div class="basket__top">
+                <div class="basket__top__wrapper">
+                  <div>
+                    <input class="basket__inp" type="checkbox" />
+                    <p class="basket__text">Hammasini yechish</p>
+                  </div>
+                  <p class="basket__text">
+                    Yetkazib berishning eng yaqin sanasi:
+                    <span class="basket__day">M02 11 (Erta)</span>
+                  </p>
+                </div>
+                <ul class="basket__list">
+                  <li class="basket__item">
+                    <input type="checkbox" />
+                    <img
+                      src="./img/carousel__img.png"
+                      width="80"
+                      height="110"
+                      alt=""
+                    />
+                    <div class="basket__item-center">
+                      <h3 class="basket__item-title">Grechka oila tanlovi, 900 g</h3>
+                      <p class="basket__item-text"></p>
+                    </div>
+                    <div class="basket__item-btns">
+                      <button class="basket__item-btn">-</button>
+                      <p class="basket__count">1</p>
+                      <button class="basket__item-btn">+</button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="goods" id="goods">
         <div class="container">
           <div class="goods__wrapper">
@@ -162,7 +205,6 @@
           </div>
         </div>
       </section>
-    
     </main>
     <!-- Footer -->
     <footer class="footer">
@@ -245,11 +287,14 @@
         <div class="footer__bottom">
           <h3 class="footer__bottom-title">Maxfiylik kelishuvi</h3>
           <h3 class="footer__bottom-title">Foydalanuvchi kelishuvi</h3>
-          <p class="footer__bottom-text">«2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar himoyalangan»</p>
+          <p class="footer__bottom-text">
+            «2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar
+            himoyalangan»
+          </p>
         </div>
       </div>
     </footer>
-    
+
     <script src="./js/bootstrap.js"></script>
     <script src="./js/index.js"></script>
   </body>
