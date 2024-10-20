@@ -1,8 +1,6 @@
 let api = 'https://6714b258690bf212c762246c.mockapi.io/'
 let elGoodsList = document.querySelector('.goods__list')
 
-// console.log(window.getComputedStyle(elGoodsList, '::before'));
-
 getAll()
 login()
 
@@ -16,6 +14,30 @@ async function getAll() {
 
 }
 
+async function isLiked(e) {
+    let situation = e.target.src.split('/').at(-1)
+
+    let id = e.target.id
+    console.log(situation == 'notLike.svg' ? false : true);
+
+    let req = JSON.stringify({
+        isLike: situation == 'notLike.svg' ? true : false
+    })
+    console.log(req);
+
+
+    let response = await fetch(`${api}items/${id}`, {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        body: req
+    })
+
+    getAll()
+
+
+}
+
+
 async function login() {
     let response = await fetch(`${api}login`, {
         headers: { 'Content-Type': 'application/json' },
@@ -26,19 +48,22 @@ async function login() {
         })
     })
 
-    console.log(await response.json());
-
-
 }
 
 
+
 function render(data) {
+    elGoodsList.innerHTML = ''
 
     for (let i = 0; i < data.length; i++) {
-        const item = data[i];
 
+        item = data[i];
 
         let li = document.createElement('li')
+
+
+
+
 
         let img = document.createElement('img')
         let name = document.createElement('h2')
@@ -54,6 +79,9 @@ function render(data) {
 
         li.className = 'good__item'
         li.id = item.id
+
+        img.width = 232
+        img.height = 310
 
         img.className = 'goods__item-img'
         name.className = 'goods__item-name'
@@ -74,23 +102,28 @@ function render(data) {
         price.textContent = item.price
         sale.textContent = item.price
         count.textContent = item.count
-        isLike.src = item.isLike
+        if (item.isLike) {
+            isLike.src = '/img/like.svg'
+        } else {
+            isLike.src = '/img/notLike.svg'
+        }
         isLike.id = item.id
         isBasket.id = item.id
-        isBasket.textContent = item.isBasket
+
         if (item.discount) {
             discount.textContent = 'Aksia'
         } else if (item.original) {
             original.textContent = 'Original'
         }
 
-        li.append(img, name, feedback, installments, price, sale, count, isLike, isBasket, discount, original)
+        isLike.onclick = isLiked
 
         elGoodsList.append(li)
+
+        li.append(img, name, feedback, installments, price, sale, count, isLike, isBasket, discount, original)
+
     }
 
-
-    console.log(list);
 
 }
 
