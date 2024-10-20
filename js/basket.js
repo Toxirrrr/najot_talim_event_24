@@ -49,15 +49,15 @@ function renderLikePage(data) {
 
             let basket = `
             <li class="basket__item">
-                    <input type="checkbox" />
+                   <div> <input type="checkbox" />
                     <img
                       src="${item.img}"
                       width="80"
                       height="110"
                       alt=""
-                    />
+                    /></div>
                     <div class="basket__item-center">
-                      <h3 class="basket__item-title">${item.title}</h3>
+                      <h3 class="basket__item-title">${item.name}</h3>
                       <p class="basket__item-text"></p>
                     </div>
                     <div class="basket__item-btns">
