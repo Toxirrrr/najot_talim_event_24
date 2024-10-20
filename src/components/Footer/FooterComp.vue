@@ -1,5 +1,5 @@
 <script lang="ts">
-    import './HeaderComp.css'
+import './FooterComp.css'
 </script>
 
 <template>
