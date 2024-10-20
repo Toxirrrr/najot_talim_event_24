@@ -9,6 +9,7 @@
   </head>
   <body>
     <!--HEADER-->
+
     <header class="header">
       <div class="header__top-wrapper">
         <div class="container">
@@ -91,12 +92,10 @@
             <p class="header__mid-text">Kirish</p>
           </a>
           <a href="/like.html" class="header__like">
-            <p class="header__like-count">2</p>
             <img src="./img/notLike.svg" width="20" height="17.5" alt="like" />
             <p class="header__mid-text">Saralangan</p>
           </a>
           <a href="/basket.html" class="header__bin">
-            <p class="header__bin-count">2</p>
             <img src="./img/basket.svg" width="16" height="20" alt="bin" />
             <p class="header__mid-text">Savat</p>
           </a>
@@ -153,54 +152,19 @@
     <!--MAIN-->
 
     <main class="main" id="main">
-      
-      <!--BASKET-->
-      
-      <section class="basket">
+      <!--LOGIN-->
+      <section class="login" id="login">
         <div class="container">
-          <div class="basket__wrapper">
-            <div>
-              <h2 class="basket__title">
-                Savatingiz<span class="basket__span">1 mahsulot</span>
-              </h2>
-              <div class="basket__top">
-                <div class="basket__top__wrapper">
-                  <div>
-                    <input class="basket__inp" type="checkbox" />
-                    <p class="basket__text">Hammasini yechish</p>
-                  </div>
-                  <p class="basket__text">
-                    Yetkazib berishning eng yaqin sanasi:
-                    <span class="basket__day">M02 11 (Erta)</span>
-                  </p>
-                </div>
-                <ul class="basket__list"></ul>
-              </div>
+            <div class="login__wrapper">
+                <form class="login__form" onsubmit="login">
+                    <input class="login__input" type="text" name="username" placeholder="Username" id="username">
+                    <input class="login__input" type="password" name="password" placeholder="Password" id="password">
+                    <button class="login__button">Jonatish</button>
+                </form>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!--GOODS-->
-
-      <section class="goods" id="goods">
-        <div class="container">
-          <div class="goods__wrapper">
-            <ul class="goods__list"></ul>
-          </div>
-        </div>
-      </section>
-
-      <!--ALL-->
-
-      <section class="all" id="all">
-        <div class="container">
-          <div class="all__wrapper">
-            <h2 class="all__header">Maktab bozori ></h2>
-            <div class="all__list"></div>
-          </div>
-        </div>
-      </section>
     </main>
     <!-- Footer -->
     <footer class="footer">
@@ -283,16 +247,12 @@
         <div class="footer__bottom">
           <h3 class="footer__bottom-title">Maxfiylik kelishuvi</h3>
           <h3 class="footer__bottom-title">Foydalanuvchi kelishuvi</h3>
-          <p class="footer__bottom-text">
-            «2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar
-            himoyalangan»
-          </p>
+          <p class="footer__bottom-text">«2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar himoyalangan»</p>
         </div>
       </div>
     </footer>
-
     <script src="./js/bootstrap.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/basket.js"></script>
+    <script src="/js/login.js"></script>
+    
   </body>
 </html>
