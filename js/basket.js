@@ -8,7 +8,7 @@ async function getAll() {
     let arr = await data.json()
 
     arr = arr.filter(item => {
-        if(item.isLike) {
+        if(item.isBasket) {
            return item
         }
         
