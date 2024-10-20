@@ -1,33 +1,9 @@
 let api = 'https://6714b258690bf212c762246c.mockapi.io/'
 let elGoodsList = document.querySelector('.goods__list')
+let elAllList = document.querySelector('.all__list')
 let elBasketCount = document.querySelector('.header__bin-count')
 let elLikeCount = document.querySelector('.header__like-count')
 
-let storageBasket = localStorage.getItem('basket')
-if(storageBasket) {
-    elBasketCount.textContent = storageBasket
-}else {
-    elBasketCount.textContent = 0
-}
-let storageLike = localStorage.getItem('like')
-if(storageLike) {
-    elLikeCount.textContent = storageLike
-}else {
-    elLikeCount.textContent = 0
-}
-
-let loading = `
-<section class="loading">
-      <div class="container">
-        <div class="lodaing__wrapper">
-          <img class="loading__img" width="128" height="128" src="./img/loading__img.png" alt="loading">
-          <h2 class="loading__title">Sizga yoqqanini qoʻshing</h2>
-          <p class="loading__text">Mahsulotdagi ♡ belgisini bosing. Akkauntga kiring va barcha saralanganlar saqlanib qoladi</p>
-          <a href="/" class="loading__link">Like Bosish</a>
-        </div>
-      </div>
-    </section>
-`
 
 getAll()
 login()
@@ -39,13 +15,7 @@ async function getAll() {
 
     let arr = await data.json()
 
-
-
-    let ok = arr.filter(item => {
-
-
-    })
-
+    renderAll(arr)
     render(arr)
 
 }
@@ -202,3 +172,84 @@ function render(data) {
 
 }
 
+
+
+function renderAll(data) {
+    elAllList.innerHTML = ''
+
+    for (let i = 0; i < data.length; i++) {
+
+        item = data[i];
+
+        let li = document.createElement('li')
+
+        let img = document.createElement('img')
+        let name = document.createElement('h2')
+        let feedback = document.createElement('p')
+        let installments = document.createElement('p')
+        let price = document.createElement('p')
+        let sale = document.createElement('p')
+        let count = document.createElement('p')
+        let priceWrapper = document.createElement('div')
+        let wrapper = document.createElement('div')
+        let isLike = document.createElement('img')
+        let isBasket = document.createElement('img')
+        let discount = document.createElement('p')
+        let original = document.createElement('p')
+
+        li.className = 'all__item'
+        li.id = item.id
+
+        img.width = 232
+        img.height = 310
+
+        img.className = 'all__item-img'
+        name.className = 'all__item-name'
+        feedback.className = 'all__item-feedback'
+        installments.className = 'all__item-installments'
+        wrapper.className = 'all__item-wrapper'
+        priceWrapper.className = 'all__item-price-wrapper'
+        price.className = 'all__item-price'
+        sale.className = 'all__item-sale'
+        isLike.className = 'all__item-isLike'
+        isBasket.className = 'all__item-isBasket'
+        discount.className = 'all__item-discount'
+        original.className = 'all__item-original'
+
+        img.src = item.img
+        name.textContent = item.name
+        feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
+        installments.textContent = item.installments
+        price.textContent = item.price
+        sale.textContent = item.price
+        if (item.isLike) {
+            isLike.src = '/img/like.svg'
+        } else {
+            isLike.src = '/img/notLike.svg'
+        }
+        isLike.id = item.id
+        isBasket.id = item.id
+        isBasket.src = '/img/addBasket.svg'
+
+        if (item.discount) {
+            discount.textContent = 'Aksia'
+        } else if (item.original) {
+            original.textContent = 'Original'
+        }
+
+        isLike.onclick = isLiked
+        isBasket.onclick = addToBasket
+
+        priceWrapper.append(wrapper, isBasket)
+        wrapper.append(price, sale)
+        elGoodsList.append(li)
+
+        li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
+
+        elAllList.append(li)
+
+    }
+
+
+
+}
