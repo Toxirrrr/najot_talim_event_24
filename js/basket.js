@@ -1,5 +1,3 @@
-let api = 'https://6714b258690bf212c762246c.mockapi.io/'
-let elGoodsList = document.querySelector('.goods__list')
 let elGoods = document.querySelector('.goods')
 
 async function getAll() {
@@ -7,78 +5,26 @@ async function getAll() {
 
     let arr = await data.json()
 
+    let count = 0
     arr = arr.filter(item => {
-        if(item.isBasket) {
-           return item
+        if (item.isBasket) {
+            return item
         }
-        
+
     })
 
     console.log(arr);
-    
+
 
     renderLikePage(arr)
 
 }
 
-
-async function isLiked(e) {
-    try {
-        let situation = e.target.src.split('/').at(-1)
-        let id = e.target.id
-
-        let req = JSON.stringify({
-            isLike: situation == 'notLike.svg' ? true : false
-        })
-        console.log(req);
-
-
-        let res = await fetch(`${api}items/${id}`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'PUT',
-            body: req
-        })
-
-        console.log(await res);
-        
-
-        getAll()
-    } catch (error) {
-        console.log('isLike err', error);
-
-    }
-}
-
-async function addToBasket(e) {
-    try {
-        let id = e.target.id
-
-        let req = JSON.stringify({
-            isBasket: true,
-            count: 1
-        })
-        console.log(req);
-
-
-        await fetch(`${api}items/${id}`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: 'PUT',
-            body: req
-        })
-
-        getAll()
-    } catch (error) {
-        console.log('isLike err', error);
-
-    }
-}
-
-
 function renderLikePage(data) {
     elGoodsList.innerHTML = ''
-    
+
     console.log();
-    if(data.length == 0) {
+    if (data.length == 0) {
         elGoods.innerHTML = `
         <section class="loading">
               <div class="container">
@@ -92,7 +38,7 @@ function renderLikePage(data) {
             </section>
         `
     }
-    
+
 
     if (data) {
         for (let i = 0; i < data.length; i++) {
@@ -163,7 +109,7 @@ function renderLikePage(data) {
             wrapper.append(price, sale)
             elGoodsList.append(li)
 
-            li.append(img, name, feedback, installments, priceWrapper, count, isLike, discount, original)
+            li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
         }
     } else {

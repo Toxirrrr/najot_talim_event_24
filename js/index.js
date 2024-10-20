@@ -1,8 +1,20 @@
 let api = 'https://6714b258690bf212c762246c.mockapi.io/'
 let elGoodsList = document.querySelector('.goods__list')
+let elBasketCount = document.querySelector('.header__bin-count')
+let elLikeCount = document.querySelector('.header__like-count')
 
-getAll()
-login()
+let storageBasket = localStorage.getItem('basket')
+if(storageBasket) {
+    elBasketCount.textContent = storageBasket
+}else {
+    elBasketCount.textContent = 0
+}
+let storageLike = localStorage.getItem('like')
+if(storageLike) {
+    elLikeCount.textContent = storageLike
+}else {
+    elLikeCount.textContent = 0
+}
 
 let loading = `
 <section class="loading">
@@ -17,11 +29,22 @@ let loading = `
     </section>
 `
 
+getAll()
+login()
+
+
 
 async function getAll() {
     let data = await fetch(`${api}items`)
 
     let arr = await data.json()
+
+
+
+    let ok = arr.filter(item => {
+
+
+    })
 
     render(arr)
 
@@ -68,6 +91,8 @@ async function addToBasket(e) {
             body: req
         })
 
+        alert('Succes')
+
         getAll()
     } catch (error) {
         console.log('isLike err', error);
@@ -83,7 +108,7 @@ async function login() {
             method: 'POST',
             body: JSON.stringify({
                 username: 'Toxirrrr',
-                password: 'f5b15a41-ce30-4f9f-894f-1757b153b0a1'
+                password: 'N42 Fullstack'
             })
         })
     } catch (error) {
@@ -133,7 +158,6 @@ function render(data) {
             priceWrapper.className = 'goods__item-price-wrapper'
             price.className = 'goods__item-price'
             sale.className = 'goods__item-sale'
-            count.className = 'goods__item-count'
             isLike.className = 'goods__item-isLike'
             isBasket.className = 'goods__item-isBasket'
             discount.className = 'goods__item-discount'
@@ -145,7 +169,6 @@ function render(data) {
             installments.textContent = item.installments
             price.textContent = item.price
             sale.textContent = item.price
-            count.textContent = item.count
             if (item.isLike) {
                 isLike.src = '/img/like.svg'
             } else {
@@ -168,7 +191,7 @@ function render(data) {
             wrapper.append(price, sale)
             elGoodsList.append(li)
 
-            li.append(img, name, feedback, installments, priceWrapper, count, isLike, discount, original)
+            li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
         }
     } else {
