@@ -24,7 +24,7 @@
     color: #7e818c;
 }
 .basket__top {
-    border: 1px solid black;
+    border: 1px solid gray;
     padding: 16px;
 }
 .basket__top__wrapper {
@@ -76,39 +76,123 @@
 .basket__item-center {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: start !important;
+    margin-left: 30px;
 }
 .basket__item-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
 }
 .basket__item-text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: gray;
 }
 .basket__item-btns {
+    display: flex;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 4px;
 }
 .basket__item-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 4px 8px;
+    background-color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
-.basket__count {
+.basket__item-btns {
+    .minus {
+        span {
+            background-color: black;
+            width: 10px;
+            height: 2px;
+        }
+    }
 }
 .basket__item-end {
+    display: flex;
+    flex-direction: column;
 }
 .basket__end-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: white;
+    color: #7e818c;
+    font-size: .85rem;
+    line-height: 1.125rem;
+    img {
+        margin-right: 10px;
+    }
 }
 .basket__sale {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75rem;
 }
 .basket__price {
+    color: #7e818c;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    text-decoration-line: line-through;
 }
 .basket__right {
+    width: 30%;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 16px;
 }
 .basket__right-title {
+    color: black;
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.75rem;
+    margin-bottom: 18px;
 }
 .basket__right-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .basket__info {
+    color: black;
+    font-size: .875rem;
+    line-height: 1.5rem;
 }
 .basket__right-btn {
+    width: 100%;
+    font-size: .75rem;
+    line-height: 1.125rem;
+    padding: 2px 6px;
+    border: 1px solid #7000ff;
+    color: #7000ff;
+    background-color: white;
 }
 .basket__all {
+    color: black;
+    font-size: .875rem;
+    line-height: 1.5rem;
 }
 .basket__economy {
+    color: #8f5;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    text-decoration-line: line-through;
 }
 .basket__right-button {
+    background-color: #7000ff;
+    color: white;
+    border-radius: 10px;
+    padding: 10px ;
+    border: none;
+    width: 100%;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
 }
