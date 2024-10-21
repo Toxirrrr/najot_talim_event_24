@@ -54,13 +54,12 @@ function count(e) {
   if (content == '-' && count != 1 || 0) {
     obj.count--;
   }
-  if (content == `Yo'q qilish` || 'bin') {
+  if (count == 'delete') {
     obj.count = 0
     obj.isBasket = false
   }
-
-
-  controlCount(obj, id);
+  console.log(obj);
+  // controlCount(obj, id);
 
 }
 
@@ -142,27 +141,26 @@ function renderBasketPage(data) {
       incrementBtn.textContent = "+";
       incrementBtn.onclick = count
 
-      basketItemBtns.appendChild(decrementBtn);
-      basketItemBtns.appendChild(itemCount);
-      basketItemBtns.appendChild(incrementBtn);
+      basketItemBtns.append(decrementBtn, itemCount, incrementBtn);
 
       const basketItemPriceContainer = document.createElement("div");
       const basketItemPrice = document.createElement("div");
       basketItemPrice.setAttribute("id", item.id);
       basketItemPrice.classList.add("basket__item-price");
-      basketItemPrice.onclick = count
 
       const binIcon = document.createElement("img");
       binIcon.src = "./img/profile__basket.svg";
+      binIcon.setAttribute("title", 'delete');
       binIcon.id = item.id
-      binIcon.title = item.count || 0
       binIcon.width = 24;
       binIcon.height = 24;
       binIcon.alt = "bin";
+      binIcon.onclick = count
 
       const deleteText = document.createElement("p");
       deleteText.textContent = "Yo'q qilish"
       deleteText.setAttribute("id", item.id);
+      deleteText.setAttribute("title", 'delete');
       deleteText.onclick = count
 
       basketItemPrice.appendChild(binIcon);
@@ -176,7 +174,7 @@ function renderBasketPage(data) {
       basketItem.appendChild(basketItemPriceContainer);
 
 
-      li.append(basketItem)
+      li.appendChild(basketItem)
 
       elBasketList.append(li)
 
