@@ -15,9 +15,9 @@ if (newUser) {
 }
 
 if (location.pathname == '/profile.html' && !newUser) {
-    location.href = '/login'
+    location.href = '/login.html'
 } else if (location.pathname == '/login.html' && newUser) {
-    location.href = '/profile'
+    location.href = '/profile.html'
 }
 
 elLoginForm?.addEventListener('submit', async function signIn(evt) {
