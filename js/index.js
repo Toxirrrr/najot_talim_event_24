@@ -24,7 +24,6 @@ async function isLiked(e) {
         let req = JSON.stringify({
             isLike: situation == 'notLike.svg' ? true : false
         })
-        console.log(req);
 
 
         await fetch(`${api}items/${id}`, {
@@ -48,16 +47,12 @@ async function addToBasket(e) {
             isBasket: true,
             count: 1
         })
-        console.log(req);
-
 
         await fetch(`${api}items/${id}`, {
             headers: { 'Content-Type': 'application/json' },
             method: 'PUT',
             body: req
         })
-
-        alert('Succes')
 
         getAll()
     } catch (error) {

@@ -818,13 +818,7 @@ header .header__bottom .header__text {
 
 .basket__wrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.basket__left {
-  width: 100%;
-  margin-right: 20px;
+  flex-direction: column;
 }
 
 .basket__title {
@@ -843,6 +837,8 @@ header .header__bottom .header__text {
 .basket__top {
   border: 1px solid gray;
   padding: 16px;
+  max-width: 868px;
+  width: 100%;
 }
 
 .basket__top__wrapper {
@@ -883,7 +879,14 @@ header .header__bottom .header__text {
 .basket__item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  border-top: 1px solid rgba(55, 55, 64, 0.08);
+  padding: 10px 0;
+  max-width: 800px;
+  width: 100%;
+  gap: 30px;
+}
+.basket__item:first-child {
+  border-top: none;
 }
 .basket__item div {
   display: flex;
@@ -899,13 +902,21 @@ header .header__bottom .header__text {
   display: flex;
   flex-direction: column;
   align-items: start !important;
-  margin-left: 30px;
 }
 
 .basket__item-title {
   font-size: 1rem;
   line-height: 1.5rem;
   margin-bottom: 1rem;
+  width: 440px;
+}
+
+.basket__item-price {
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.basket__item-price:hover {
+  opacity: 0.5;
 }
 
 .basket__item-text {

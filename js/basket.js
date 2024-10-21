@@ -1,83 +1,188 @@
 let elGoods = document.querySelector('.goods')
 let elBasketList = document.querySelector('.basket__list')
+let elBasket = document.querySelector('.basket')
 
-async function getAll() {
-    let data = await fetch(`${api}items`)
+basketGetAll()
 
-    let arr = await data.json()
+async function basketGetAll() {
+  let data = await fetch(`${api}items`)
 
-    arr = arr.filter(item => {
-        if (item.isBasket) {
-            return item
-        }
+  let arr = await data.json()
 
-    })
+  arr = arr.filter(item => {
+    if (item.count) {
+      return item
+    }
+  })
 
-    console.log(arr);
-
-
-    renderLikePage(arr)
+  renderBasketPage(arr)
 
 }
 
-function renderLikePage(data) {
-    elGoodsList.innerHTML = ''
+async function controlCount(obj, id) {
+  let res = await fetch(`${api}items/${id}`, {
+    headers: { "Content-Type": "application/json" },
+    method: 'PUT',
+    body: JSON.stringify({
+      isBasket: obj.obj || true,
+      count: obj.count
+    })
+  })
 
-    console.log();
-    if (data.length == 0) {
-        elGoods.innerHTML = `
+  res = await res.json()
+  
+  if (res.count != obj.count) {
+    return
+  }
+  basketGetAll()
+
+  //location.href = '/basket.html'
+}
+
+function count(e) {
+  let id = e.target.id
+  let count = e.target.title
+  let content = e.target.textContent
+  let obj = {
+    count: +count,
+    isBasket: true
+  }
+  if (content == '+') {
+    obj.count++;
+  } else if (content == '-') {
+    if (count != 1 || 0) {
+      obj.count--;
+    }
+  } else if (content == `Yo'q qilish` || 'bin') {
+    obj.count = 0
+    obj.isBasket = false
+  }
+  
+
+  controlCount(obj, id);
+
+}
+
+function removeToBasket() {
+
+}
+
+function renderBasketPage(data) {
+  elBasketList.innerHTML = ''
+
+  if (data.length == 0) {
+    elBasket.innerHTML = `
         <section class="loading">
               <div class="container">
                 <div class="lodaing__wrapper">
-                  <img class="loading__img" width="128" height="128" src="./img/loading__img.png" alt="loading">
-                  <h2 class="loading__title">Sizga yoqqanini qoʻshing</h2>
-                  <p class="loading__text">Mahsulotdagi ♡ belgisini bosing. Akkauntga kiring va barcha saralanganlar saqlanib qoladi</p>
-                  <a href="/" class="loading__link">Like Bosish</a>
+                  <img class="loading__img" width="128" height="128" src="./img/noBasket__img.png" alt="loading">
+                  <h2 class="loading__title">Savatda hozircha mahsulot yoʻq</h2>
+                  <p class="loading__text">Bosh sahifadagi to’plamlardan boshlang yoki kerakli mahsulotni qidiruv orqali toping</p>
+                  <a href="/" class="loading__link">Bosh Sahifa</a>
                 </div>
               </div>
             </section>
         `
+  } else {
+
+
+    for (let i = 0; i < data.length; i++) {
+
+      item = data[i];
+
+      let li = document.createElement('li')
+      li.className = 'basket__item'
+
+      li.id = item.id
+
+      const basketItem = document.createElement("div");
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+
+      const img = document.createElement("img");
+      img.src = item.img;
+      img.width = 80;
+      img.height = 110;
+      img.alt = item.name;
+
+      const basketItemCenter = document.createElement("div");
+      basketItemCenter.classList.add("basket__item-center");
+
+      const itemTitle = document.createElement("h3");
+      itemTitle.classList.add("basket__item-title");
+      itemTitle.textContent = item.name;
+
+      const sellerInfo = document.createElement("p");
+      sellerInfo.classList.add("basket__item-text");
+      sellerInfo.textContent = "Sotuvchi: www";
+
+      basketItemCenter.appendChild(itemTitle);
+      basketItemCenter.appendChild(sellerInfo);
+
+      const basketItemBtns = document.createElement("div");
+      basketItemBtns.classList.add("basket__item-btns");
+
+      const decrementBtn = document.createElement("button");
+      decrementBtn.classList.add("basket__item-btn");
+      decrementBtn.setAttribute("title", item.count);
+      decrementBtn.setAttribute("id", item.id);
+      decrementBtn.textContent = "-";
+      decrementBtn.onclick = count
+
+
+      const itemCount = document.createElement("p");
+      itemCount.classList.add("basket__count");
+      itemCount.textContent = item.count;
+
+      const incrementBtn = document.createElement("button");
+      incrementBtn.classList.add("basket__item-btn");
+      incrementBtn.setAttribute("title", item.count);
+      incrementBtn.setAttribute("id", item.id);
+      incrementBtn.textContent = "+";
+      incrementBtn.onclick = count
+
+      basketItemBtns.appendChild(decrementBtn);
+      basketItemBtns.appendChild(itemCount);
+      basketItemBtns.appendChild(incrementBtn);
+
+      const basketItemPriceContainer = document.createElement("div");
+      const basketItemPrice = document.createElement("div");
+      basketItemPrice.setAttribute("id", item.id);
+      basketItemPrice.classList.add("basket__item-price");
+      basketItemPrice.onclick = count
+
+      const binIcon = document.createElement("img");
+      binIcon.src = "./img/profile__basket.svg";
+      binIcon.id = item.id
+      binIcon.title = item.count || 0
+      binIcon.width = 24;
+      binIcon.height = 24;
+      binIcon.alt = "bin";
+
+      const deleteText = document.createElement("p");
+      deleteText.textContent = "Yo'q qilish"
+      deleteText.setAttribute("id", item.id);
+      deleteText.onclick = removeToBasket(item.id)
+
+      basketItemPrice.appendChild(binIcon);
+      basketItemPrice.appendChild(deleteText);
+      basketItemPriceContainer.appendChild(basketItemPrice);
+
+      basketItem.appendChild(checkbox);
+      basketItem.appendChild(img);
+      basketItem.appendChild(basketItemCenter);
+      basketItem.appendChild(basketItemBtns);
+      basketItem.appendChild(basketItemPriceContainer);
+
+
+      li.append(basketItem)
+
+      elBasketList.append(li)
+
     }
-
-
-    if (data) {
-        for (let i = 0; i < data.length; i++) {
-
-            item = data[i];
-
-            let li = document.createElement('li')
-
-            let basket = `
-            <li class="basket__item">
-                   <div> <input type="checkbox" />
-                    <img
-                      src="${item.img}"
-                      width="80"
-                      height="110"
-                      alt=""
-                    /></div>
-                    <div class="basket__item-center">
-                      <h3 class="basket__item-title">${item.name}</h3>
-                      <p class="basket__item-text"></p>
-                    </div>
-                    <div class="basket__item-btns">
-                      <button class="basket__item-btn">-</button>
-                      <p class="basket__count">1</p>
-                      <button class="basket__item-btn">+</button>
-                    </div>
-                  </li>
-            `
-            li.innerHTML = basket
-
-            elBasketList.append(li)
-
-        }
-    } else {
-        console.log('');
-    }
+  }
 
 
 
 }
-
-getAll()
