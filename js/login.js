@@ -1,6 +1,8 @@
 let elLoginForm = document.querySelector('.login__form')
 let elHeaderTitle = document.querySelector('.header__mid-login')
 let elHeaderProfileLink = document.querySelector('.header__login')
+let elUserInput = document.querySelector('#username').value
+let elPassInput = document.querySelector('#password').value
 let api_new = 'https://6714b258690bf212c762246c.mockapi.io/'
 let user = localStorage.getItem('user')
 let newUser = JSON.parse(user)
@@ -28,8 +30,8 @@ if(location.pathname == '/login.html' && newUser) {
                 headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
                 body: JSON.stringify({
-                    username: 'Toxirrrr',
-                    password: 'N42 Fullstack'
+                    username: elUserInput || 'Duo Vs Trio',
+                    password: elPassInput || 'Duo Vs Trio'
                 })
             })
             res = await res.json()

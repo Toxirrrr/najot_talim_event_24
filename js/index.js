@@ -64,9 +64,20 @@ async function addToBasket(e) {
 function render(data) {
     elGoodsList.innerHTML = ''
 
+    let like = 0
+    let bin = 0
+
     for (let i = 0; i < data.length; i++) {
 
         item = data[i];
+        if(item.isLike) {
+            ++like
+            console.log(item.isLike);
+        }else if(item.count){
+            ++bin
+            console.log(item.count);
+            
+        }
 
         let li = document.createElement('li')
         let img = document.createElement('img')
@@ -81,6 +92,8 @@ function render(data) {
         let isBasket = document.createElement('img')
         let discount = document.createElement('p')
         let original = document.createElement('p')
+        elBasketCount.textContent = bin
+        elLikeCount.textContent = like
 
         // ID
         li.id = item.id
@@ -141,8 +154,6 @@ function render(data) {
         li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
     }
-
-
 
 }
 

@@ -30,7 +30,8 @@
               <p class="header__top-bold">Topshirish punktlari</p>
             </div>
             <div class="header__top-right">
-              <a class="header__top-text header__top-text-active" href="/">Uzumda soting</a
+              <a class="header__top-text header__top-text-active" href="/"
+                >Uzumda soting</a
               >
               <a class="header__top-text" href="/">Savol-javoblar</a>
               <a class="header__top-text" href="/">Buyurtmalarim</a>
@@ -92,10 +93,12 @@
           </a>
           <a href="/like.html" class="header__like">
             <img src="./img/notLike.svg" width="20" height="17.5" alt="like" />
+            <p class="header__like-count"></p>
             <p class="header__mid-text">Saralangan</p>
           </a>
           <a href="/basket.html" class="header__bin">
             <img src="./img/basket.svg" width="16" height="20" alt="bin" />
+            <p class="header__bin-count"></p>
             <p class="header__mid-text">Savat</p>
           </a>
         </div>
@@ -151,16 +154,14 @@
     <!--MAIN-->
 
     <main class="main" id="main">
-    
       <!--GOODS-->
-      <section class="goods" id="goods">
+      <section class="goods all" id="goods">
         <div class="container">
           <div class="goods__wrapper">
-            <ul class="goods__list"></ul>
+            <ul class="goods__list all__list"></ul>
           </div>
         </div>
       </section>
-    
     </main>
     <!-- Footer -->
     <footer class="footer">
@@ -243,12 +244,16 @@
         <div class="footer__bottom">
           <h3 class="footer__bottom-title">Maxfiylik kelishuvi</h3>
           <h3 class="footer__bottom-title">Foydalanuvchi kelishuvi</h3>
-          <p class="footer__bottom-text">«2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar himoyalangan»</p>
+          <p class="footer__bottom-text">
+            «2024© XK MCHJ «UZUM MARKET». STIR 309376127. Barcha huquqlar
+            himoyalangan»
+          </p>
         </div>
       </div>
     </footer>
-    
+
     <script src="./js/bootstrap.js"></script>
+    <script src="/js/index.js"></script>
     <script src="./js/like.js"></script>
     <script src="/js/login.js"></script>
   </body>

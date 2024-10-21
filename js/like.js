@@ -1,6 +1,3 @@
-let api = 'https://6714b258690bf212c762246c.mockapi.io/'
-let elGoodsList = document.querySelector('.goods__list')
-let elGoods = document.querySelector('.goods')
 
 async function getAll() {
     let data = await fetch(`${api}items`)
