@@ -14,9 +14,9 @@ if (newUser) {
     localStorage.removeItem('user')
 }
 
-if (location.pathname == '/profile.html' && !newUser) {
+if (location.pathname.includes('/profile') && !newUser) {
     location.href = '/login.html'
-} else if (location.pathname == '/login.html' && newUser) {
+} else if (location.pathname.includes('/login') && newUser) {
     location.href = '/profile.html'
 }
 
