@@ -1,6 +1,7 @@
 let elGoods = document.querySelector('.goods')
 let elBasketList = document.querySelector('.basket__list')
 let elBasket = document.querySelector('.basket')
+let elBasketCountInBasket = document.querySelector('.basket__span')
 
 basketGetAll()
 
@@ -14,7 +15,6 @@ async function basketGetAll() {
       return item
     }
   })
-
   renderBasketPage(arr)
 
 }
@@ -30,7 +30,7 @@ async function controlCount(obj, id) {
   })
 
   res = await res.json()
-  
+
   if (res.count != obj.count) {
     return
   }
@@ -40,6 +40,7 @@ async function controlCount(obj, id) {
 }
 
 function count(e) {
+
   let id = e.target.id
   let count = e.target.title
   let content = e.target.textContent
@@ -49,21 +50,17 @@ function count(e) {
   }
   if (content == '+') {
     obj.count++;
-  } else if (content == '-') {
-    if (count != 1 || 0) {
-      obj.count--;
-    }
-  } else if (content == `Yo'q qilish` || 'bin') {
+  }
+  if (content == '-' && count != 1 || 0) {
+    obj.count--;
+  }
+  if (content == `Yo'q qilish` || 'bin') {
     obj.count = 0
     obj.isBasket = false
   }
-  
+
 
   controlCount(obj, id);
-
-}
-
-function removeToBasket() {
 
 }
 
@@ -85,15 +82,17 @@ function renderBasketPage(data) {
         `
   } else {
 
+    let num = 0
 
     for (let i = 0; i < data.length; i++) {
 
-      item = data[i];
+      let item = data[i];
 
       let li = document.createElement('li')
       li.className = 'basket__item'
 
       li.id = item.id
+      elBasketCountInBasket.textContent = ` ${++num} Mahsulot`
 
       const basketItem = document.createElement("div");
 
@@ -164,7 +163,7 @@ function renderBasketPage(data) {
       const deleteText = document.createElement("p");
       deleteText.textContent = "Yo'q qilish"
       deleteText.setAttribute("id", item.id);
-      deleteText.onclick = removeToBasket(item.id)
+      deleteText.onclick = count
 
       basketItemPrice.appendChild(binIcon);
       basketItemPrice.appendChild(deleteText);

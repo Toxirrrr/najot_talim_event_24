@@ -72,12 +72,11 @@ function render(data) {
         item = data[i];
         if(item.isLike) {
             ++like
-            console.log(item.isLike);
-        }else if(item.count){
-            ++bin
-            console.log(item.count);
-            
         }
+        if(item.count){
+            ++bin
+        }
+        
 
         let li = document.createElement('li')
         let img = document.createElement('img')
