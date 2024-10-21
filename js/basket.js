@@ -59,7 +59,7 @@ function count(e) {
     obj.isBasket = false
   }
   console.log(obj);
-  // controlCount(obj, id);
+  controlCount(obj, id);
 
 }
 
