@@ -101,6 +101,7 @@ function renderBasketPage(data) {
       checkbox.type = "checkbox";
 
       const img = document.createElement("img");
+      img.draggable = false
       img.src = item.img;
       img.width = 80;
       img.height = 110;

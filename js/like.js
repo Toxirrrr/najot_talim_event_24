@@ -95,7 +95,6 @@ function renderLikePage(data) {
         let installments = document.createElement('p')
         let price = document.createElement('p')
         let sale = document.createElement('p')
-        let count = document.createElement('p')
         let priceWrapper = document.createElement('div')
         let wrapper = document.createElement('div')
         let isLike = document.createElement('img')
@@ -108,6 +107,7 @@ function renderLikePage(data) {
 
         img.width = 232
         img.height = 310
+        img.draggable = false
 
         img.className = 'goods__item-img'
         name.className = 'goods__item-name'
@@ -117,7 +117,6 @@ function renderLikePage(data) {
         priceWrapper.className = 'goods__item-price-wrapper'
         price.className = 'goods__item-price'
         sale.className = 'goods__item-sale'
-        count.className = 'goods__item-count'
         isLike.className = 'goods__item-isLike'
         isBasket.className = 'goods__item-isBasket'
         discount.className = 'goods__item-discount'
@@ -129,7 +128,6 @@ function renderLikePage(data) {
         installments.textContent = item.installments
         price.textContent = item.price
         sale.textContent = item.price
-        count.textContent = item.count
         if (item.isLike) {
             isLike.src = '/img/like.svg'
         } else {
@@ -151,7 +149,7 @@ function renderLikePage(data) {
         wrapper.append(price, sale)
         elGoodsList.append(li)
 
-        li.append(img, name, feedback, installments, priceWrapper, count, isLike, discount, original)
+        li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
     }
 

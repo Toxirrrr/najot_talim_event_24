@@ -54,7 +54,7 @@ async function addToBasket(e) {
             body: req
         })
 
-        getAll()
+        location.href = '/basket.html'
     } catch (error) {
         console.log('isLike err', error);
 
@@ -69,7 +69,6 @@ function render(data) {
         item = data[i];
 
         let li = document.createElement('li')
-
         let img = document.createElement('img')
         let name = document.createElement('h2')
         let feedback = document.createElement('p')
@@ -83,12 +82,13 @@ function render(data) {
         let discount = document.createElement('p')
         let original = document.createElement('p')
 
-        li.className = 'good__item'
+        // ID
         li.id = item.id
+        isLike.id = item.id
+        isBasket.id = item.id
 
-        img.width = 232
-        img.height = 310
-
+        // CLASSNAME
+        li.className = 'good__item'
         img.className = 'goods__item-img'
         name.className = 'goods__item-name'
         feedback.className = 'goods__item-feedback'
@@ -102,20 +102,28 @@ function render(data) {
         discount.className = 'goods__item-discount'
         original.className = 'goods__item-original'
 
+        
+        // ATTRIBUTES
+        img.width = 232
+        img.height = 310
+        img.draggable = false
         img.src = item.img
-        name.textContent = item.name
-        feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
-        installments.textContent = item.installments
-        price.textContent = item.price
-        sale.textContent = item.price
+        if(!item.count) {
+            isBasket.src = '/img/addBasket.svg'
+        }
         if (item.isLike) {
             isLike.src = '/img/like.svg'
         } else {
             isLike.src = '/img/notLike.svg'
         }
-        isLike.id = item.id
-        isBasket.id = item.id
-        isBasket.src = '/img/addBasket.svg'
+
+
+        // TEXTCONTENT
+        name.textContent = item.name
+        feedback.textContent = item.feedback?.rate + '(' + item.feedback?.count + ` sharhlar)`
+        installments.textContent = item.installments
+        price.textContent = item.price
+        sale.textContent = item.price
 
         if (item.discount) {
             discount.textContent = 'Aksia'
@@ -156,7 +164,6 @@ function renderAll(data) {
             let installments = document.createElement('p')
             let price = document.createElement('p')
             let sale = document.createElement('p')
-            let count = document.createElement('p')
             let priceWrapper = document.createElement('div')
             let wrapper = document.createElement('div')
             let isLike = document.createElement('img')
@@ -169,6 +176,7 @@ function renderAll(data) {
 
             img.width = 232
             img.height = 310
+            img.draggable = 0
 
             img.className = 'all__item-img'
             name.className = 'all__item-name'
