@@ -37,6 +37,8 @@ elLoginForm?.addEventListener('submit', async function signIn(evt) {
         if (res.createdAt) {
             localStorage.setItem('user', JSON.stringify(res))
             location.href = '/'
+        }else {
+            throw error('idk')
         }
     } catch (error) {
         console.log('login err', error);
