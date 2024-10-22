@@ -62,7 +62,9 @@ async function addToBasket(e) {
 }
 
 function render(data) {
-    elGoodsList.innerHTML = ''
+    if(elGoodsList) {
+        elGoodsList.innerHTML = ''
+    }
 
     let like = 0
     let bin = 0
@@ -70,13 +72,13 @@ function render(data) {
     for (let i = 0; i < data.length; i++) {
 
         item = data[i];
-        if(item.isLike) {
+        if (item.isLike) {
             ++like
         }
-        if(item.count){
+        if (item.count) {
             ++bin
         }
-        
+
 
         let li = document.createElement('li')
         let img = document.createElement('img')
@@ -114,13 +116,13 @@ function render(data) {
         discount.className = 'goods__item-discount'
         original.className = 'goods__item-original'
 
-        
+
         // ATTRIBUTES
         img.width = 232
         img.height = 310
         img.draggable = false
         img.src = item.img
-        if(!item.count) {
+        if (!item.count) {
             isBasket.src = '/img/addBasket.svg'
         }
         if (item.isLike) {
@@ -148,7 +150,9 @@ function render(data) {
 
         priceWrapper.append(wrapper, isBasket)
         wrapper.append(price, sale)
-        elGoodsList.append(li)
+        if(elGoodsList) {
+            elGoodsList.append(li)
+        }
 
         li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
@@ -160,7 +164,9 @@ function render(data) {
 
 function renderAll(data) {
     if (!data.length == 0) {
-        elAllList.innerHTML = ''
+        if (elAllList) {
+            elAllList.innerHTML = ''
+        }
 
         for (let i = 0; i < data.length; i++) {
 
@@ -227,11 +233,15 @@ function renderAll(data) {
 
             priceWrapper.append(wrapper, isBasket)
             wrapper.append(price, sale)
-            elGoodsList.append(li)
+            if (elGoodsList) {
+                elGoodsList.append(li)
+            }
 
             li.append(img, name, feedback, installments, priceWrapper, isLike, discount, original)
 
-            elAllList.append(li)
+            if (elAllList) {
+                elAllList.append(li)
+            }
 
         }
     }
